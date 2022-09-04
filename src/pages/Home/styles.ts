@@ -11,6 +11,12 @@ export const MainSection = styled.div`
   align-items: center;
   gap: 56px;
   margin-top: 94px;
+
+  @media (max-width: 1000px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 50px;
+  }
 `;
 
 export const InfosContainer = styled.div`
@@ -24,11 +30,22 @@ export const InfosContainer = styled.div`
     color: ${({ theme }) => theme["base-title"]};
   }
 
-  span {
+  p {
     margin-top: 16px;
     font-size: 20px;
     line-height: 1.3;
     color: ${({ theme }) => theme["base-subtitle"]};
+  }
+
+  @media (max-width: 450px) {
+    h2 {
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 20px;
+    }
   }
 `;
 
@@ -40,6 +57,12 @@ export const AdvantagesList = styled.div`
 
   .column {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (max-width: 450px) {
+    margin-top: 30px;
     flex-direction: column;
     gap: 20px;
   }
@@ -58,6 +81,8 @@ export const AdvantageItem = styled.div<AdvantageItemProps>`
   .icon {
     width: 32px;
     height: 32px;
+    min-width: 32px;
+    min-height: 32px;
     border-radius: 50%;
     background: ${({ iconBackground }) => iconBackground};
 
@@ -77,5 +102,9 @@ export const IllustrationContainer = styled.div`
   img {
     max-width: 476px;
     max-height: 360px;
+
+    @media (max-width: 540px) {
+      max-width: 96%;
+    }
   }
 `;

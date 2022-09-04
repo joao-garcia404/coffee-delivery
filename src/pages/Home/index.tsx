@@ -21,10 +21,11 @@ export function Home() {
       <MainSection>
         <InfosContainer>
           <h2>Encontre o café perfeito para qualquer hora do dia</h2>
-          <span>
+
+          <p>
             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
             hora
-          </span>
+          </p>
 
           <AdvantagesList>
             <div className="column">
