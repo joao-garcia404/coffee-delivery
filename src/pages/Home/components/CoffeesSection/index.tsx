@@ -11,7 +11,7 @@ export function CoffeesSection() {
 
       <CoffeesListContainer>
         {coffeesList.map((coffee) => {
-          return <CoffeeProduct coffee={coffee} />;
+          return <CoffeeProduct key={coffee.id} coffee={coffee} />;
         })}
       </CoffeesListContainer>
     </CoffeesSectionContainer>

@@ -1,3 +1,5 @@
+import { useCart } from "../../hooks/useCart";
+
 import { CounterButton } from "../CounterButton";
 
 import { Coffee } from "./dtos";
@@ -19,13 +21,15 @@ interface CoffeeProductProps {
 }
 
 export function CoffeeProduct({ coffee }: CoffeeProductProps) {
+  const { cart } = useCart();
+
   return (
     <CoffeeProductContainer>
       <img src={CoffeeImage} alt="Expresso tradicional" />
 
       <TagsContainer>
         {coffee.categories.map((category) => {
-          return <CoffeeTag>{category}</CoffeeTag>;
+          return <CoffeeTag key={category}>{category}</CoffeeTag>;
         })}
       </TagsContainer>
 
