@@ -36,8 +36,14 @@ export const CoffeeProductContainer = styled.div`
   }
 `;
 
-export const CoffeeTag = styled.div`
+export const TagsContainer = styled.div`
   margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+`;
+
+export const CoffeeTag = styled.div`
   border-radius: 100px;
   padding: 4px 8px;
   background: ${({ theme }) => theme["yellow-light"]};

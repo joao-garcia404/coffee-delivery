@@ -14,4 +14,9 @@ export const CoffeesSectionContainer = styled.div`
 
 export const CoffeesListContainer = styled.div`
   margin-top: 54px;
+
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
 `;

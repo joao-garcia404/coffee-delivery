@@ -1,5 +1,7 @@
 import { CoffeeProduct } from "../../../../components/CoffeeProduct";
 
+import { coffeesList } from "./mock";
+
 import { CoffeesSectionContainer, CoffeesListContainer } from "./styles";
 
 export function CoffeesSection() {
@@ -8,7 +10,9 @@ export function CoffeesSection() {
       <span className="title">Nossos cafés</span>
 
       <CoffeesListContainer>
-        <CoffeeProduct />
+        {coffeesList.map((coffee) => {
+          return <CoffeeProduct coffee={coffee} />;
+        })}
       </CoffeesListContainer>
     </CoffeesSectionContainer>
   );
