@@ -21,7 +21,9 @@ interface CoffeeProductProps {
 }
 
 export function CoffeeProduct({ coffee }: CoffeeProductProps) {
-  const { cart } = useCart();
+  const { cart, addToCart, removeFromCart } = useCart();
+
+  const coffeeCart = cart.find((item) => item.id === coffee.id)
 
   return (
     <CoffeeProductContainer>
@@ -49,7 +51,15 @@ export function CoffeeProduct({ coffee }: CoffeeProductProps) {
           </span>
         </span>
 
-        <CounterButton onAdd={() => {}} onSub={() => {}} />
+        <CounterButton
+          quantity={coffeeCart?.quantity ?? 0}
+          onAdd={() => addToCart(coffee.id)}
+          onSub={() => {
+            if (coffeeCart && coffeeCart?.quantity > 0) {
+              removeFromCart(coffee.id)
+            }
+          }}
+        />
 
         <CartButton>
           <ShoppingCartSimple weight="fill" />
