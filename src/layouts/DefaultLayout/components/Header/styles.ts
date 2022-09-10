@@ -36,6 +36,8 @@ export const Location = styled.div`
 `;
 
 export const CartButton = styled.button`
+  position: relative;
+
   display: flex;
   align-items: center;
   gap: 4px;
@@ -52,4 +54,23 @@ export const CartButton = styled.button`
     height: 22px;
     color: ${({ theme }) => theme["yellow-dark"]};
   }
+`;
+
+export const CartQuantityInfo = styled.div`
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme["yellow-dark"]};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+  font-size: 12px;
+  color: ${({ theme }) => theme.white};
 `;

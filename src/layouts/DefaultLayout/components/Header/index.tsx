@@ -1,10 +1,24 @@
+import { useCart } from "../../../../hooks/useCart";
+
 import { MapPin, ShoppingCart } from "phosphor-react";
 
 import LogoImg from "../../../../assets/logo.svg";
 
-import { HeaderContainer, Location, CartButton } from "./styles";
+import {
+  HeaderContainer,
+  Location,
+  CartButton,
+  CartQuantityInfo,
+} from "./styles";
 
 export function Header() {
+  const { cart } = useCart();
+
+  const totalCartCoffeeQuantity = cart.reduce(
+    (acc, item) => acc + item.quantity,
+    0,
+  );
+
   return (
     <HeaderContainer>
       <div className="logo">
@@ -19,6 +33,10 @@ export function Header() {
 
         <CartButton type="button">
           <ShoppingCart weight="fill" />
+
+          {totalCartCoffeeQuantity > 0 && (
+            <CartQuantityInfo>{totalCartCoffeeQuantity}</CartQuantityInfo>
+          )}
         </CartButton>
       </div>
     </HeaderContainer>
