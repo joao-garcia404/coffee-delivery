@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 
 import { DeliveryAddressForm } from "./components/DeliveryAdressForm";
+import { PaymentMethodForm } from "./components/PaymentMethodForm";
 
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
 
@@ -24,9 +25,10 @@ const NewOrderValidationSchema = zod.object({
   district: zod.string().min(1, "Informe o bairro"),
   city: zod.string().min(1, "Informe a cidade"),
   state: zod.string().min(1, "Informe a UF"),
+  paymentMethod: zod.string().min(1, "Selecione um método de pagamento."),
 });
 
-type NewOrderFormData = zod.infer<typeof NewOrderValidationSchema>;
+export type NewOrderFormData = zod.infer<typeof NewOrderValidationSchema>;
 
 export function Checkout() {
   const theme = useTheme();
@@ -71,6 +73,8 @@ export function Checkout() {
                     </p>
                   </div>
                 </CardSummary>
+
+                <PaymentMethodForm />
               </Card>
             </div>
 
