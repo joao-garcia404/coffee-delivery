@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import { useCart } from "../../../../hooks/useCart";
 
 import { MapPin, ShoppingCart } from "phosphor-react";
@@ -31,13 +33,15 @@ export function Header() {
           São Paulo, SP
         </Location>
 
-        <CartButton type="button">
-          <ShoppingCart weight="fill" />
+        <NavLink to="/checkout" title="checkout">
+          <CartButton type="button">
+            <ShoppingCart weight="fill" />
 
-          {totalCartCoffeeQuantity > 0 && (
-            <CartQuantityInfo>{totalCartCoffeeQuantity}</CartQuantityInfo>
-          )}
-        </CartButton>
+            {totalCartCoffeeQuantity > 0 && (
+              <CartQuantityInfo>{totalCartCoffeeQuantity}</CartQuantityInfo>
+            )}
+          </CartButton>
+        </NavLink>
       </div>
     </HeaderContainer>
   );
