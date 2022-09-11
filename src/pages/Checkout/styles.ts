@@ -40,4 +40,21 @@ export const CardSummary = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 8px;
+
+  span {
+    font-size: 16px;
+    line-height: 1.3;
+    color: ${({ theme }) => theme["base-subtitle"]};
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.3;
+    color: ${({ theme }) => theme["base-text"]};
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
 `;
