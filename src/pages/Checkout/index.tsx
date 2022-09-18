@@ -1,11 +1,13 @@
 import { useTheme } from "styled-components";
 
+import { toast } from "react-toastify";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 
 import { DeliveryAddressForm } from "./components/DeliveryAdressForm";
 import { PaymentMethodForm } from "./components/PaymentMethodForm";
+import { SelectedCoffeesSection } from "./components/SelectedCoffeesSection";
 
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
 
@@ -16,7 +18,6 @@ import {
   CoffeeCard,
   CardSummary,
 } from "./styles";
-import { SelectedCoffeesSection } from "./components/SelectedCoffeesSection";
 
 const NewOrderValidationSchema = zod.object({
   cep: zod.string().min(1, "Informe o cep"),
@@ -49,7 +50,11 @@ export function Checkout() {
 
   return (
     <CheckoutContainer>
-      <form onSubmit={handleSubmit(handleCreateOrder)}>
+      <form
+        onSubmit={handleSubmit(handleCreateOrder, () =>
+          toast("Verifique os campos com erro", { type: "error" }),
+        )}
+      >
         <FormProvider {...newOrderForm}>
           <Content>
             <div className="column">
