@@ -1,4 +1,5 @@
 import { useCart } from "../../hooks/useCart";
+import { NavLink } from "react-router-dom";
 
 import { CounterButton } from "../CounterButton";
 
@@ -61,9 +62,11 @@ export function CoffeeProduct({ coffee }: CoffeeProductProps) {
           }}
         />
 
-        <CartButton>
-          <ShoppingCartSimple weight="fill" />
-        </CartButton>
+        <NavLink to="/checkout" title="checkout">
+          <CartButton>
+            <ShoppingCartSimple weight="fill" />
+          </CartButton>
+        </NavLink>
       </CardFooter>
     </CoffeeProductContainer>
   );
