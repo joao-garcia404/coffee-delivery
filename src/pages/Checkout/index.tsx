@@ -21,7 +21,7 @@ import { SelectedCoffeesSection } from "./components/SelectedCoffeesSection";
 const NewOrderValidationSchema = zod.object({
   cep: zod.string().min(1, "Informe o cep"),
   street: zod.string().min(1, "Informe a rua"),
-  number: zod.number().min(1, "Informe o número"),
+  number: zod.string().min(1, "Informe o número"),
   complement: zod.string().optional(),
   district: zod.string().min(1, "Informe o bairro"),
   city: zod.string().min(1, "Informe a cidade"),
@@ -40,10 +40,12 @@ export function Checkout() {
 
   const {
     handleSubmit,
-    formState: {},
+    formState: { errors },
   } = newOrderForm;
 
-  async function handleCreateOrder(data: NewOrderFormData) {}
+  async function handleCreateOrder(data: NewOrderFormData) {
+    console.log(data);
+  }
 
   return (
     <CheckoutContainer>

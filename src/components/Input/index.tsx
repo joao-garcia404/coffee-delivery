@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from "react";
 
-import { useFormContext } from "react-hook-form";
+import { useFormContext, Controller } from "react-hook-form";
 
 import { InputComponent, InputContainer, HelperText } from "./styles";
 
@@ -9,11 +9,21 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export function Input({ name, ...rest }: InputProps) {
-  const { register } = useFormContext();
+  const { register, control } = useFormContext();
 
   return (
-    <InputContainer>
-      <InputComponent {...register(name)} {...rest} />
-    </InputContainer>
+    <Controller
+      name={name}
+      control={control}
+      render={({ fieldState: { error } }) => (
+        <InputContainer>
+          <InputComponent
+            error={!!error?.message}
+            {...register(name)}
+            {...rest}
+          />
+        </InputContainer>
+      )}
+    />
   );
 }

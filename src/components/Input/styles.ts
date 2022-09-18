@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+type InputComponentProps = {
+  error: boolean;
+};
 
 export const InputContainer = styled.div`
   width: 100%;
@@ -6,7 +10,7 @@ export const InputContainer = styled.div`
   align-items: center;
 `;
 
-export const InputComponent = styled.input`
+export const InputComponent = styled.input<InputComponentProps>`
   width: 100%;
   height: 42px;
   padding: 12px;
@@ -28,6 +32,12 @@ export const InputComponent = styled.input`
   &:focus {
     border-color: ${({ theme }) => theme["yellow-dark"]};
   }
+
+  ${({ error }) =>
+    error &&
+    css`
+      border-color: ${({ theme }) => theme.error};
+    `};
 `;
 
 export const HelperText = styled.span``;

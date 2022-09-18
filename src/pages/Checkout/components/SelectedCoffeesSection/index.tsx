@@ -18,8 +18,6 @@ import {
 export function SelectedCoffeesSection() {
   const { cart } = useCart();
 
-  console.log(cart);
-
   function formatCart() {
     const coffees = coffeesList.filter((coffee) =>
       cart.map((item) => item.id).includes(coffee.id),
@@ -80,7 +78,7 @@ export function SelectedCoffeesSection() {
           </div>
         </OrderResume>
 
-        <Button>Confirmar pedido</Button>
+        <Button type="submit">Confirmar pedido</Button>
       </Footer>
     </SelectedCoffeeSectionContainer>
   );

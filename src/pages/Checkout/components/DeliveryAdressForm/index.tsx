@@ -15,7 +15,7 @@ export function DeliveryAddressForm() {
       <Content>
         <InputLine>
           <InputContainer size="medium">
-            <Input name="CEP" placeholder="CEP" />
+            <Input name="cep" placeholder="CEP" />
           </InputContainer>
         </InputLine>
 
