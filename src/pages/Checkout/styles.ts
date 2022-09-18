@@ -34,6 +34,7 @@ export const Card = styled.div`
 export const CoffeeCard = styled(Card)`
   max-width: 448px;
   border-radius: 6px 44px;
+  padding: 40px;
 `;
 
 export const CardSummary = styled.div`

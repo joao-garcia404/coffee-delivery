@@ -34,6 +34,7 @@ export function PaymentMethodForm() {
       {paymentOptions.map((option) => {
         return (
           <PaymentMethodButton
+            key={option.value}
             active={paymentMethod === option.value}
             onClick={() => setValue("paymentMethod", option.value)}
           >

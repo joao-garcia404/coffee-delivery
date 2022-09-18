@@ -16,6 +16,7 @@ import {
   CoffeeCard,
   CardSummary,
 } from "./styles";
+import { SelectedCoffeesSection } from "./components/SelectedCoffeesSection";
 
 const NewOrderValidationSchema = zod.object({
   cep: zod.string().min(1, "Informe o cep"),
@@ -80,7 +81,9 @@ export function Checkout() {
 
             <div className="column">
               <div className="title">Cafés selecionados</div>
-              <CoffeeCard></CoffeeCard>
+              <CoffeeCard>
+                <SelectedCoffeesSection />
+              </CoffeeCard>
             </div>
           </Content>
         </FormProvider>

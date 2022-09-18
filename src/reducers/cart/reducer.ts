@@ -5,18 +5,25 @@ import { ActionTypes } from "./actions";
 interface CoffeeCart {
   id: number;
   quantity: number;
+  unitPrice: number;
 }
 
 export function cartReducer(state: CoffeeCart[], action: any) {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT_TO_CART: {
+      const { coffeeId, price } = action.payload.data;
+
       const productAlreadyAtTheCart = state.findIndex(
-        (item) => item.id === action.payload.productId,
+        (item) => item.id === action.payload.data.coffeeId,
       );
 
       if (productAlreadyAtTheCart < 0) {
         return produce(state, (draft) => {
-          draft.push({ id: action.payload.productId, quantity: 1 });
+          draft.push({
+            id: coffeeId,
+            quantity: 1,
+            unitPrice: price,
+          });
         });
       }
 
@@ -32,9 +39,7 @@ export function cartReducer(state: CoffeeCart[], action: any) {
 
       if (productIndex > -1) {
         return produce(state, (draft) => {
-          draft[productIndex].quantity > 0
-            ? draft[productIndex].quantity--
-            : delete draft[productIndex];
+          draft[productIndex].quantity > 0 && draft[productIndex].quantity--;
         });
       }
 

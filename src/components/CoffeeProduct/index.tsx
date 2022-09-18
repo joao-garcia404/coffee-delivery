@@ -23,7 +23,7 @@ interface CoffeeProductProps {
 export function CoffeeProduct({ coffee }: CoffeeProductProps) {
   const { cart, addToCart, removeFromCart } = useCart();
 
-  const coffeeCart = cart.find((item) => item.id === coffee.id)
+  const coffeeCart = cart.find((item) => item.id === coffee.id);
 
   return (
     <CoffeeProductContainer>
@@ -53,10 +53,10 @@ export function CoffeeProduct({ coffee }: CoffeeProductProps) {
 
         <CounterButton
           quantity={coffeeCart?.quantity ?? 0}
-          onAdd={() => addToCart(coffee.id)}
+          onAdd={() => addToCart({ coffeeId: coffee.id, price: coffee.value })}
           onSub={() => {
             if (coffeeCart && coffeeCart?.quantity > 0) {
-              removeFromCart(coffee.id)
+              removeFromCart(coffee.id);
             }
           }}
         />

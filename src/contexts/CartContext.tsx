@@ -1,16 +1,22 @@
 import { createContext, ReactNode, useReducer, useState } from "react";
 
 import { addToCart, removeFromCart } from "../reducers/cart/actions";
-import { cartReducer } from '../reducers/cart/reducer';
+import { cartReducer } from "../reducers/cart/reducer";
 
 interface CoffeeCart {
   id: number;
   quantity: number;
+  unitPrice: number;
+}
+
+export interface AddToCartData {
+  coffeeId: number;
+  price: number;
 }
 
 export interface CartContextData {
   cart: CoffeeCart[];
-  addToCart: (coffeeId: number) => void;
+  addToCart: (data: AddToCartData) => void;
   removeFromCart: (coffeeId: number) => void;
 }
 
@@ -21,10 +27,10 @@ interface CartContextProviderProps {
 export const CartContext = createContext({} as CartContextData);
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cart, dispatch] = useReducer(cartReducer, [], () => [])
+  const [cart, dispatch] = useReducer(cartReducer, [], () => []);
 
-  function addCoffeeToCart(coffeeId: number) {
-    dispatch(addToCart(coffeeId));
+  function addCoffeeToCart(data: AddToCartData) {
+    dispatch(addToCart(data));
   }
 
   function removeCoffeeFromCart(coffeeId: number) {
