@@ -1,4 +1,8 @@
+import { useEffect } from "react";
+
 import { useTheme } from "styled-components";
+
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 
@@ -11,8 +15,41 @@ import {
   OrderItem,
 } from "./styles";
 
+interface LocationState {
+  state: {
+    district: string;
+    number: string;
+    state: string;
+    street: string;
+    city: string;
+    paymentMethod: string;
+  };
+}
+
 export function OrderConfirmed() {
   const theme = useTheme();
+  const navigate = useNavigate();
+
+  const { state } = useLocation() as unknown as LocationState;
+
+  function getPaymentMethod() {
+    const { paymentMethod } = state;
+
+    switch (paymentMethod) {
+      case "money":
+        return "Dinheiro";
+      case "credit":
+        return "Cartão de crédito";
+      default:
+        return "Cartão de débito";
+    }
+  }
+
+  useEffect(() => {
+    if (state === null) navigate("/");
+  }, [state]);
+
+  if (state === null) return <></>;
 
   return (
     <OrderConfirmedContainer>
@@ -30,9 +67,14 @@ export function OrderConfirmed() {
 
             <div className="items">
               <p>
-                Entrega em <strong>Rua galileu gaia, 524</strong>
+                Entrega em{" "}
+                <strong>
+                  {state?.street}, {state?.number}
+                </strong>
               </p>
-              <p>Vila maria - Sao paulo, SP</p>
+              <p>
+                {state?.district} - {state?.city}, {state?.state}
+              </p>
             </div>
           </OrderItem>
 
@@ -54,7 +96,7 @@ export function OrderConfirmed() {
 
             <div className="items">
               <p>Pagamento na entrega</p>
-              <strong>Cartao de credito</strong>
+              <strong>{getPaymentMethod()}</strong>
             </div>
           </OrderItem>
         </OrderDetailsSection>

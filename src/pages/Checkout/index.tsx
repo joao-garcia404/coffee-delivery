@@ -1,4 +1,5 @@
 import { useTheme } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import { FormProvider, useForm } from "react-hook-form";
@@ -34,6 +35,7 @@ export type NewOrderFormData = zod.infer<typeof NewOrderValidationSchema>;
 
 export function Checkout() {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const newOrderForm = useForm<NewOrderFormData>({
     resolver: zodResolver(NewOrderValidationSchema),
@@ -45,7 +47,7 @@ export function Checkout() {
   } = newOrderForm;
 
   async function handleCreateOrder(data: NewOrderFormData) {
-    console.log(data);
+    navigate("/confirmation", { state: data });
   }
 
   return (
