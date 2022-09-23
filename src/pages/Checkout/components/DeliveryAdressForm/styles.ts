@@ -22,6 +22,10 @@ export const InputLine = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @media (max-width: 530px) {
+    flex-direction: column;
+  }
 `;
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -33,4 +37,8 @@ export const InputContainer = styled.div<InputContainerProps>`
       min-width: ${sizes[size]};
       max-width: ${sizes[size]};
     `}
+
+  @media (max-width: 530px) {
+    max-width: 100%;
+  }
 `;

@@ -10,6 +10,10 @@ export const PaymentMethodFormContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+
+  @media (max-width: 530px) {
+    flex-direction: column;
+  }
 `;
 
 export const PaymentMethodButton = styled.button<PaymentMethodButtonProps>`

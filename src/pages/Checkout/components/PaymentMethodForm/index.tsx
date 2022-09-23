@@ -35,6 +35,7 @@ export function PaymentMethodForm() {
         return (
           <PaymentMethodButton
             key={option.value}
+            type="button"
             active={paymentMethod === option.value}
             onClick={() => setValue("paymentMethod", option.value)}
           >

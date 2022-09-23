@@ -22,6 +22,16 @@ export const Content = styled.div`
     flex-direction: column;
     gap: 12px;
   }
+
+  @media (max-width: 1120px) {
+    flex-direction: column-reverse;
+    align-items: center;
+
+    .column {
+      max-width: 600px;
+      align-items: center;
+    }
+  }
 `;
 
 export const Card = styled.div`
@@ -35,6 +45,10 @@ export const CoffeeCard = styled(Card)`
   max-width: 448px;
   border-radius: 6px 44px;
   padding: 40px;
+
+  @media (max-width: 530px) {
+    padding: 10px;
+  }
 `;
 
 export const CardSummary = styled.div`
