@@ -18,7 +18,7 @@ export interface CartContextData {
   cart: CoffeeCart[];
   removeAllItems: () => void;
   addToCart: (data: AddToCartData) => void;
-  removeFromCart: (coffeeId: number) => void;
+  removeFromCart: (coffeeId: number, all?: boolean) => void;
 }
 
 interface CartContextProviderProps {
@@ -34,8 +34,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(addToCart(data));
   }
 
-  function removeCoffeeFromCart(coffeeId: number) {
-    dispatch(removeFromCart(coffeeId));
+  function removeCoffeeFromCart(coffeeId: number, all?: boolean) {
+    dispatch(removeFromCart(coffeeId, all));
   }
 
   function removeAllItems() {

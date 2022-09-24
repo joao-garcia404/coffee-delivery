@@ -15,11 +15,12 @@ export function addToCart(data: AddToCartData) {
   };
 }
 
-export function removeFromCart(productId: number) {
+export function removeFromCart(productId: number, all?: boolean) {
   return {
     type: ActionTypes.REMOVE_PRODUCT_FROM_CART,
     payload: {
       productId,
+      all,
     },
   };
 }

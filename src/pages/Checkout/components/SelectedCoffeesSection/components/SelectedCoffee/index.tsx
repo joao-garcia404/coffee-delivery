@@ -29,11 +29,6 @@ export function SelectedCoffee({ coffee }: SelectedCoffeeProps) {
     ? coffee.value * coffeeQuantity?.quantity
     : 0;
 
-  const totalCartCoffeeQuantity = cart.reduce(
-    (acc, item) => acc + item.quantity,
-    0,
-  );
-
   return (
     <SelectedCoffeeContainer>
       <CoffeeInfos>
@@ -51,7 +46,10 @@ export function SelectedCoffee({ coffee }: SelectedCoffeeProps) {
               onSub={() => removeFromCart(coffee.id)}
             />
 
-            <RemoveButton>
+            <RemoveButton
+              type="button"
+              onClick={() => removeFromCart(coffee.id, true)}
+            >
               <Trash />
               remover
             </RemoveButton>

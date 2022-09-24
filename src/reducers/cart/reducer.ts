@@ -39,7 +39,10 @@ export function cartReducer(state: CoffeeCart[], action: any) {
 
       if (productIndex > -1) {
         return produce(state, (draft) => {
-          draft[productIndex].quantity > 0 && draft[productIndex].quantity--;
+          action.payload?.all
+            ? draft.splice(productIndex, 1)
+            : draft[productIndex].quantity > 0 &&
+              draft[productIndex].quantity--;
         });
       }
 
