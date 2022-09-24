@@ -6,7 +6,7 @@
   Coffee delivery
 </h3>
 
-<p align="center">Coffee delivery App</p>
+<p align="center">Your favorite coffees in one place</p>
 
 <p align="center">
   <a href="#-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
