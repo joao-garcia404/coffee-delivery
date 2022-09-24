@@ -1,6 +1,8 @@
 import { useTheme } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
+import { useCart } from "../../hooks/useCart";
+
 import { toast } from "react-toastify";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -37,16 +39,16 @@ export function Checkout() {
   const theme = useTheme();
   const navigate = useNavigate();
 
+  const { removeAllItems } = useCart();
+
   const newOrderForm = useForm<NewOrderFormData>({
     resolver: zodResolver(NewOrderValidationSchema),
   });
 
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = newOrderForm;
+  const { handleSubmit } = newOrderForm;
 
   async function handleCreateOrder(data: NewOrderFormData) {
+    removeAllItems();
     navigate("/confirmation", { state: data });
   }
 

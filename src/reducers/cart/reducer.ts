@@ -46,6 +46,15 @@ export function cartReducer(state: CoffeeCart[], action: any) {
       return state;
     }
 
+    case ActionTypes.CLEAR_CART: {
+      return produce(state, (draft) => {
+        draft.forEach(() => {
+          draft.shift();
+          draft.pop();
+        });
+      });
+    }
+
     default:
       return state;
   }

@@ -34,6 +34,10 @@ export const Button = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme["yellow-dark"]};
   }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme["base-hover"]};
+  }
 `;
 
 export const Footer = styled.div``;

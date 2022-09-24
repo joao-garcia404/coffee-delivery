@@ -17,7 +17,7 @@ export function Header() {
   const { cart } = useCart();
 
   const totalCartCoffeeQuantity = cart.reduce(
-    (acc, item) => acc + item.quantity,
+    (acc, item) => acc + item?.quantity,
     0,
   );
 

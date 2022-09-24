@@ -18,6 +18,8 @@ import {
 export function SelectedCoffeesSection() {
   const { cart } = useCart();
 
+  const cartWithoutCoffees = !cart.find((item) => item?.quantity > 0);
+
   function formatCart() {
     const coffees = coffeesList.filter((coffee) =>
       cart.map((item) => item.id).includes(coffee.id),
@@ -78,7 +80,9 @@ export function SelectedCoffeesSection() {
           </div>
         </OrderResume>
 
-        <Button type="submit">Confirmar pedido</Button>
+        <Button type="submit" disabled={cartWithoutCoffees}>
+          Confirmar pedido
+        </Button>
       </Footer>
     </SelectedCoffeeSectionContainer>
   );
